@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\components",
+    "\\src\\components\\FeaturedMovie",
+    "\\src\\components\\Movie",
+    "\\src\\components\\RatedCards",
+    "\\src\\components\\Sidebar"
+  ],
+  "PreviewInSolutionExplorer": false
+}
