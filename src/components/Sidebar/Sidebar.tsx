@@ -32,7 +32,7 @@ function Sidebar(props: any) {
 
     return (
         <>
-            <Link to="/" className={classes.imageLink}>
+            <Link to={window.location.pathname} className={classes.imageLink}>
                 <img
                     className={classes.image}
                     src={theme.palette.mode === 'light' ? blueLogo : redLogo}
@@ -43,7 +43,7 @@ function Sidebar(props: any) {
             <List>
                 <ListSubheader>Categories</ListSubheader>
                 {categories.map(({ label, value }) => (
-                    <Link key={value} className={classes.links} to="/">
+                    <Link key={value} className={classes.links} to={window.location.pathname}>
                         <ListItem button onClick={() => dispatch(selectGenreOrCategory(value))}>
                             <ListItemIcon>
                                 <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
@@ -62,7 +62,7 @@ function Sidebar(props: any) {
                     </Box>
                 )
                     : data?.genres?.map(({ name, id }: any) => (
-                        <Link key={name} className={classes.links} to="/">
+                        <Link key={name} className={classes.links} to={window.location.pathname}>
                             <ListItem button onClick={() => dispatch(selectGenreOrCategory(id))}>
                                 <ListItemIcon>
                                     <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} />
