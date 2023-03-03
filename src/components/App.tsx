@@ -20,7 +20,8 @@ function App() {
             <main className={classes.content}>
                 <div className={classes.toolkit} />
                 <Routes>
-                    <Route path="/" element={<Movies />} />
+                    {['/', '/Movie-Mania'].map((path) => <Route path={path} element={<Movies />} />)}
+                    {/* <Route path="/" element={<Movies />} /> */}
                     <Route path="/approved" element={<Movies />} />
                     <Route path="/movie/:id" element={<MovieInfo />} />
                     <Route path="/actors/:id" element={<Actors />} />
