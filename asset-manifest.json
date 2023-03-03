@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/movie-mania/static/css/main.6d4e09db.css",
-    "main.js": "/movie-mania/static/js/main.602304cb.js",
+    "main.js": "/movie-mania/static/js/main.5a535c9f.js",
     "static/media/red-logo.png": "/movie-mania/static/media/red-logo.dd27f9d35bb03c85ca8e.png",
     "index.html": "/movie-mania/index.html",
     "main.6d4e09db.css.map": "/movie-mania/static/css/main.6d4e09db.css.map",
-    "main.602304cb.js.map": "/movie-mania/static/js/main.602304cb.js.map"
+    "main.5a535c9f.js.map": "/movie-mania/static/js/main.5a535c9f.js.map"
   },
   "entrypoints": [
     "static/css/main.6d4e09db.css",
-    "static/js/main.602304cb.js"
+    "static/js/main.5a535c9f.js"
   ]
 }
