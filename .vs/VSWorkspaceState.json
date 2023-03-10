@@ -4,10 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\components",
-    "\\src\\components\\FeaturedMovie",
     "\\src\\components\\Movie",
-    "\\src\\components\\RatedCards",
-    "\\src\\components\\Sidebar"
+    "\\src\\components\\MovieInfo",
+    "\\src\\components\\MovieList",
+    "\\src\\components\\Sidebar",
+    "\\src\\features",
+    "\\src\\services"
   ],
+  "SelectedNode": "\\src\\components\\Sidebar\\Sidebar.tsx",
   "PreviewInSolutionExplorer": false
 }
