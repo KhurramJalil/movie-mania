@@ -19,7 +19,7 @@ function FeaturedMovie(props: { movie: IMovieProps }) {
     if (!movie) return null;
 
     return (
-        <Box component={Link} to={`/movie/${movie.id}`} className={classes.featuredCardContainer}>
+        <Box component={Link} to={`/movie-mania/movie/${movie.id}`} className={classes.featuredCardContainer}>
             <Card className={classes.card} classes={{ root: classes.cardRoot }}>
                 <CardMedia
                     component="img"

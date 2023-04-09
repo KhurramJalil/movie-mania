@@ -22,7 +22,7 @@ function Movie(props: IMovieProps) {
     return (
         <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className={classes.movie}>
             <Grow in key={mkey} timeout={(mkey + 1) * 250}>
-                <Link className={classes.links} to={`/movie/${movie.id}`}>
+                <Link className={classes.links} to={`/movie-mania/movie/${movie.id}`}>
                     <img
                         src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : 'https://www.fillmurray.com/200/300'}
                         alt={movie.title}

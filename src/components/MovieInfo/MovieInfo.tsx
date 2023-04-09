@@ -97,7 +97,7 @@ function MovieInfo() {
                 </Grid>
                 <Grid item className={classes.genresContainer}>
                     {data?.genres?.map((genre: any) => (
-                        <Link className={classes.links} key={genre.name} to="/" onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
+                        <Link className={classes.links} key={genre.name} to="/movie-mania" onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
                             <img src={genreIcons[genre.name.toLowerCase()]} className={classes.genreImage} height={30} />
                             <Typography color="textPrimary" variant="subtitle1">{genre?.name}</Typography>
                         </Link>
@@ -109,7 +109,7 @@ function MovieInfo() {
                 <Grid item container spacing={2}>
                     {data && data?.credits?.cast?.map((character: { profile_path: string | ''; id: number; name: string | ''; character: string | ''; }, i: React.Key | null | undefined) => (
                         character.profile_path && (
-                            <Grid key={i} item xs={4} md={2} component={Link} to={`/actors/${character.id}`} style={{ textDecoration: 'none' }}>
+                            <Grid key={i} item xs={4} md={2} component={Link} to={`/movie-mania/actors/${character.id}`} style={{ textDecoration: 'none' }}>
                                 <img
                                     className={classes.castImage}
                                     src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}

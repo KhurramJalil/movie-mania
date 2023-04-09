@@ -23,11 +23,10 @@ function App() {
                 <div className={classes.toolkit} />
                 <Routes>
                     {['/', '/Movie-Mania'].map((path, key) => <Route path={path} element={<Movies />} key={key} />)}
-                    {/* <Route path="/" element={<Movies />} /> */}
-                    <Route path="/approved" element={<Movies />} />
-                    <Route path="/movie/:id" element={<MovieInfo />} />
-                    <Route path="/actors/:id" element={<Actors />} />
-                    <Route path="/profile/:id" element={<Profile />} />
+                    {['/approved', '/Movie-Mania/approved'].map((path, key) => <Route path={path} element={<Movies />} key={key} />)}
+                    {['/movie/:id', '/Movie-Mania/movie/:id'].map((path, key) => <Route path={path} element={<MovieInfo />} key={key} />)}
+                    {['/actors/:id', '/Movie-Mania/actors/:id'].map((path, key) => <Route path={path} element={<Actors />} key={key} />)}
+                    {['/profile/:id', '/Movie-Mania/profile/:id'].map((path, key) => <Route path={path} element={<Profile />} key={key} />)}
                 </Routes>
             </main>
             {/* <div */}
