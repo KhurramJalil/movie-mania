@@ -55,7 +55,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^5.0.1"
   },
   "overrides": {
     "nth-check": "https://registry.npmjs.org/nth-check/-/nth-check-2.1.1.tgz",
