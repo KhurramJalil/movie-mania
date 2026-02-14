@@ -4,10 +4,14 @@ import { Search as SearchIcon } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 
 import useStyles from './styles';
+import resolveStyles from '../../utils/resolveStyles';
+import { useTheme } from '@mui/material/styles';
 import { searchMovie } from '../../features/currentGenreOrCategory';
 
 function Search() {
-    const classes = useStyles();
+    const theme = useTheme();
+    const raw = useStyles();
+    const classes = resolveStyles(raw, theme as any);
     const [query, setQuery] = useState('');
     const dispatch = useDispatch();
 
@@ -18,14 +22,14 @@ function Search() {
     };
 
     return (
-        <div className={classes.searchContainer}>
+        <div style={classes.searchContainer as any}>
             <TextField
                 onKeyPress={handleKeyPress}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 variant="standard"
                 InputProps={{
-                    className: classes.input,
+                    sx: classes.input as any,
                     startAdornment: (
                         <InputAdornment position="start">
                             <SearchIcon />

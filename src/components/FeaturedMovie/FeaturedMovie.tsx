@@ -1,7 +1,8 @@
-import React from 'react';
 import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
-import { Link } from 'react-router-dom';
-import useStyles from './styles';
+import { useTheme } from '@mui/material/styles';
+import * as React from 'react';
+import rawStyles from './styles';
+import resolveStyles from '../../utils/resolveStyles';
 
 interface IMovieProps {
     id: number,
@@ -13,23 +14,26 @@ interface IMovieProps {
 }
 
 function FeaturedMovie(props: { movie: IMovieProps }) {
-    const classes = useStyles();
+    const theme = useTheme();
+    const raw = rawStyles();
+    const classes = resolveStyles(raw, theme as any);
+
     const { movie } = props;
 
     if (!movie) return null;
 
     return (
-        <Box component={Link} to={`/movie-mania/movie/${movie.id}`} className={classes.featuredCardContainer}>
-            <Card className={classes.card} classes={{ root: classes.cardRoot }}>
+        <Box component="a" href={`/movie/${movie.id}`} sx={classes.featuredCardContainer as any}>
+            <Card sx={classes.card as any} classes={{ root: classes.cardRoot as any }}>
                 <CardMedia
                     component="img"
                     alt={movie.title}
                     image={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
                     title={movie.title}
-                    className={classes.cardMedia}
+                    sx={classes.cardMedia as any}
                 />
                 <Box padding="20px">
-                    <CardContent className={classes.cardContent} classes={{ root: classes.cardContentRoot }}>
+                    <CardContent sx={classes.cardContent as any} classes={{ root: classes.cardContentRoot as any }}>
                         <Typography variant="h5" gutterBottom>{movie.title}</Typography>
                         <Typography variant="body2">{movie.overview}</Typography>
                     </CardContent>

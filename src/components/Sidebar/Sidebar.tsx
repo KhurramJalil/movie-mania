@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
+import { useEffect } from 'react';
 import { Divider, List, ListItem, ListItemText, ListSubheader, ListItemIcon, Box, CircularProgress } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { useTheme } from '@mui/styles';
+import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 
-import useStyles from './styles';
+import rawStyles from './styles';
+import resolveStyles from '../../utils/resolveStyles';
 import { useGetGenresQuery } from '../../services/TMDB';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import tempIcons from '../../assets/genres';
 import redLogo from '../../assets/images/red-logo.png';
 import blueLogo from '../../assets/images/blue-logo.png';
+import Image from 'next/image';
 
 const categories = [
     { label: 'Popular', value: 'popular' },
@@ -18,39 +20,46 @@ const categories = [
 ];
 
 function Sidebar(props: any) {
-    const theme:any = useTheme();
-    const classes = useStyles();
+    const theme = useTheme();
+    const raw = rawStyles();
+    const classes = resolveStyles(raw, theme as any);
     const dispatch = useDispatch();
     const { setMobileOpen } = props;
     const { data, isFetching } = useGetGenresQuery({}, {});
-    const { genreIdOrCategoryName } = useSelector((state:any) => state.currentGenreOrCategory);
+    const { genreIdOrCategoryName } = useSelector((state: any) => state.currentGenreOrCategory);
     const genreIcons: { [key: string]: any } = tempIcons;
 
     useEffect(() => {
         setMobileOpen(false);
     }, [genreIdOrCategoryName]);
 
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
+
     return (
         <>
-            <Link to={window.location.pathname} className={classes.imageLink}>
-                <img
-                    className={classes.image}
-                    src={theme.palette.mode === 'light' ? blueLogo : redLogo}
-                    alt="MovieMania Logo"
-                />
-            </Link>
+            <a href={currentPath} style={classes.imageLink as any}>
+                <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                    <Image
+                        src={theme.palette.mode === 'light' ? blueLogo : redLogo}
+                        alt="MovieMania Logo"
+                        width={200}
+                        height={80}
+                        style={classes.image as any}
+                    />
+                </div>
+            </a>
             <Divider />
             <List>
                 <ListSubheader>Categories</ListSubheader>
                 {categories.map(({ label, value }) => (
-                    <Link key={value} className={classes.links} to={window.location.pathname}>
-                        <ListItem button onClick={() => dispatch(selectGenreOrCategory(value))}>
+                    <a key={value} style={classes.links as any} href={currentPath} onClick={(e) => { e.preventDefault(); dispatch(selectGenreOrCategory(value)); }}>
+                        <ListItem button>
                             <ListItemIcon>
-                                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
+                                <Image src={genreIcons[label.toLowerCase()]} alt={label} width={30} height={30} style={classes.genreImages as any} />
                             </ListItemIcon>
                             <ListItemText primary={label} />
                         </ListItem>
-                    </Link>
+                    </a>
                 ))}
             </List>
             <Divider />
@@ -62,14 +71,14 @@ function Sidebar(props: any) {
                     </Box>
                 )
                     : data?.genres?.map(({ name, id }: any) => (
-                        <Link key={name} className={classes.links} to={window.location.pathname}>
-                            <ListItem button onClick={() => dispatch(selectGenreOrCategory(id))}>
+                        <a key={name} style={classes.links as any} href={currentPath} onClick={(e) => { e.preventDefault(); dispatch(selectGenreOrCategory(id)); }}>
+                            <ListItem button>
                                 <ListItemIcon>
-                                    <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} />
+                                    <Image src={genreIcons[name.toLowerCase()]} alt={name} width={30} height={30} style={classes.genreImages as any} />
                                 </ListItemIcon>
                                 <ListItemText primary={name} />
                             </ListItem>
-                        </Link>
+                        </a>
                     ))}
             </List>
         </>

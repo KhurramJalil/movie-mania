@@ -1,6 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Typography, Button } from '@mui/material';
 import useStyles from './styles';
+import { useTheme } from '@mui/material/styles';
+import resolveStyles from '../../utils/resolveStyles';
 
 interface IPaginationProps {
     currentPage: number,
@@ -9,7 +11,10 @@ interface IPaginationProps {
 }
 
 function Pagination(props: IPaginationProps) {
-    const classes = useStyles();
+    const theme = useTheme();
+    const raw = useStyles();
+    const classes = resolveStyles(raw, theme as any);
+
     const { currentPage, setPage, totalPages } = props;
 
     const handlePrev = () => {
@@ -23,10 +28,10 @@ function Pagination(props: IPaginationProps) {
     if (totalPages === 0) return null;
 
     return (
-        <div className={classes.container}>
-            <Button onClick={handlePrev} variant="contained" className={classes.button} color="primary" type="button">Prev</Button>
-            <Typography variant="h4" className={classes.pageNumber}>{currentPage}</Typography>
-            <Button onClick={handleNext} variant="contained" className={classes.button} color="primary" type="button">Next</Button>
+        <div style={classes.container as any}>
+            <Button onClick={handlePrev} variant="contained" sx={classes.button as any} color="primary" type="button">Prev</Button>
+            <Typography variant="h4" style={classes.pageNumber as any}>{currentPage}</Typography>
+            <Button onClick={handleNext} variant="contained" sx={classes.button as any} color="primary" type="button">Next</Button>
         </div>
     );
 }

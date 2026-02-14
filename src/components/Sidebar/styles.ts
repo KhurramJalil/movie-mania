@@ -1,6 +1,4 @@
-import { makeStyles } from '@mui/styles';
-
-export default makeStyles((theme:any) => ({
+const useStyles = () => ({
     imageLink: {
         display: 'flex',
         justifyContent: 'center',
@@ -9,15 +7,17 @@ export default makeStyles((theme:any) => ({
     image: {
         width: '70%',
     },
-    links: {
-        color: theme.palette.text.primary,
+    links: (theme: any) => ({
+        color: theme?.palette?.text?.primary,
         textDecoration: 'none',
-    },
-    genreImages: {
-        filter: theme.palette.mode === 'dark' ? 'invert(1)' : 'dark',
-    },
+    }),
+    genreImages: (theme: any) => ({
+        filter: theme?.palette?.mode === 'dark' ? 'invert(1)' : 'dark',
+    }),
     bigText: {
         color: 'primary',
         fontSize: 30,
     },
-}));
+});
+
+export default useStyles;

@@ -1,6 +1,4 @@
-import { makeStyles } from '@mui/styles';
-
-export default makeStyles((theme: any) => ({
+const useStyles = () => ({
     featuredCardContainer: {
         marginBottom: '20px',
         display: 'flex',
@@ -26,15 +24,17 @@ export default makeStyles((theme: any) => ({
         backgroundColor: 'rgba(0,0,0,0.575)',
         backgroundBlendMode: 'darken',
     },
-    cardContent: {
+    cardContent: (theme: any) => ({
         color: '#fff',
         width: '40%',
-        [theme.breakpoints.down('sm')]: {
+        '@media (max-width:600px)': {
             width: '100%',
         },
-    },
+    }),
     cardContentRoot: {
         position: 'relative',
         backgroundColor: 'transparent',
     },
-}));
+});
+
+export default useStyles;

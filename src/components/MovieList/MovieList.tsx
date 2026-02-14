@@ -1,7 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { Grid } from '@mui/material';
 import useStyles from './styles';
 import Movie from '../Movie/Movie';
+import { useTheme } from '@mui/material/styles';
+import resolveStyles from '../../utils/resolveStyles';
 
 interface IMovie {
     id: number,
@@ -17,11 +19,13 @@ interface IMovieListProps {
 }
 
 function MovieList(props: IMovieListProps) {
-    const classes = useStyles();
+    const theme = useTheme();
+    const raw = useStyles();
+    const classes = resolveStyles(raw, theme as any);
     const { excludeFirst, numberOfMovies, movies: { results } = {} } = props;
 
     return (
-        <Grid container className={classes.movieContainer}>
+        <Grid container sx={classes.movieContainer as any}>
             {results?.slice(excludeFirst ? 1 : 0, numberOfMovies).map((movieItem, i) => (
                 <Movie movie={movieItem} mkey={i} key={i} />
             ))}

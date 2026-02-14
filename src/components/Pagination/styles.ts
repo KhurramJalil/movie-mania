@@ -1,6 +1,4 @@
-import { makeStyles } from '@mui/styles';
-
-export default makeStyles((theme: any) => ({
+const useStyles = () => ({
     container: {
         display: 'flex',
         justifyContent: 'center',
@@ -9,8 +7,10 @@ export default makeStyles((theme: any) => ({
     button: {
         margin: '30px 2px',
     },
-    pageNumber: {
+    pageNumber: (theme: any) => ({
         margin: '0 20px !important',
-        color: theme.palette.text.primary,
-    },
-}));
+        color: theme?.palette?.text?.primary,
+    }),
+});
+
+export default useStyles;

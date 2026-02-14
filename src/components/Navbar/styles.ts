@@ -1,26 +1,24 @@
-import { makeStyles } from '@mui/styles';
-
 const drawerWidth = 240;
 
-export default makeStyles((theme: any) => ({
+const useStyles = () => ({
     toolbar: {
         height: '80px',
         display: 'flex',
         justifyContent: 'space-between',
         marginLeft: '240px',
-        [theme.breakpoints.down('sm')]: {
+        '@media (max-width:600px)': {
             marginLeft: 0,
             flexWrap: 'wrap',
         },
     },
     menuButton: {
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
+        marginRight: '16px',
+        '@media (min-width:600px)': {
             display: 'none',
         },
     },
     drawer: {
-        [theme.breakpoints.up('sm')]: {
+        '@media (min-width:600px)': {
             width: drawerWidth,
             flexShrink: 0,
         },
@@ -34,4 +32,6 @@ export default makeStyles((theme: any) => ({
             textDecoration: 'none',
         },
     },
-}));
+});
+
+export default useStyles;

@@ -1,13 +1,13 @@
-import { makeStyles } from '@mui/styles';
-
-export default makeStyles((theme: any) => ({
-    movieContainer: {
+const useStyles = () => ({
+    movieContainer: (theme: any) => ({
         display: 'flex',
         justifyContent: 'space-between',
         overflow: 'auto',
         flexWrap: 'wrap',
-        [theme.breakpoints.down('sm')]: {
+        '@media (max-width:600px)': {
             justifyContent: 'center',
         },
-    },
-}));
+    }),
+});
+
+export default useStyles;

@@ -1,6 +1,4 @@
-import { makeStyles } from '@mui/styles';
-
-export default makeStyles(() => ({
+const useStyles = () => ({
     root: {
         display: 'flex',
         height: '100%',
@@ -12,4 +10,6 @@ export default makeStyles(() => ({
     toolkit: {
         height: '70px',
     },
-}));
+});
+
+export default useStyles;

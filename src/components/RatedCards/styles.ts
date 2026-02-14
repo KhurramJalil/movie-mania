@@ -1,7 +1,8 @@
-import { makeStyles } from '@mui/styles';
 
-export default makeStyles(() => ({
+const useStyles = () => ({
     container: {
         margin: '20px 0',
     },
-}));
+});
+
+export default useStyles;
