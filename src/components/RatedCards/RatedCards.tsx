@@ -23,7 +23,7 @@ function RatedCards(props: IRateCardsProps) {
     return (
         <Box>
             <Typography variant="h5" gutterBottom>{title}</Typography>
-            <Box display="flex" flexWrap="wrap" className={classes.container}>
+            <Box display="flex" flexWrap="wrap" sx={classes.container}>
                 {results?.map((movieItem, i) => (
                     <Movie movie={movieItem} mkey={i} key={i} />
                 ))}
