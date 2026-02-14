@@ -3,6 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import * as React from 'react';
 import rawStyles from './styles';
 import resolveStyles from '../../utils/resolveStyles';
+import Link from 'next/link';
 
 interface IMovieProps {
     id: number,
@@ -23,8 +24,8 @@ function FeaturedMovie(props: { movie: IMovieProps }) {
     if (!movie) return null;
 
     return (
-        <Box component="a" href={`/movie/${movie.id}`} sx={classes.featuredCardContainer as any}>
-            <Card sx={classes.card as any} classes={{ root: classes.cardRoot as any }}>
+        <Box component={Link} href={`/movie/${movie.id}`} sx={classes.featuredCardContainer}>
+            <Card sx={classes.card as any} classes={{ root: classes.cardRoot}}>
                 <CardMedia
                     component="img"
                     alt={movie.title}
@@ -33,7 +34,7 @@ function FeaturedMovie(props: { movie: IMovieProps }) {
                     sx={classes.cardMedia as any}
                 />
                 <Box padding="20px">
-                    <CardContent sx={classes.cardContent as any} classes={{ root: classes.cardContentRoot as any }}>
+                    <CardContent sx={classes.cardContent as any} classes={{ root: classes.cardContentRoot}}>
                         <Typography variant="h5" gutterBottom>{movie.title}</Typography>
                         <Typography variant="body2">{movie.overview}</Typography>
                     </CardContent>
