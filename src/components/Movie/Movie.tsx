@@ -4,8 +4,7 @@ import useStyles from './styles';
 import { useTheme } from '@mui/material/styles';
 import resolveStyles from '../../utils/resolveStyles';
 import Image from 'next/image';
-import Link from 'next/link';
-import { getPath } from '../../utils/path';
+import Image from 'next/link';
 
 interface IMovie {
     id: number,
@@ -28,7 +27,7 @@ function Movie(props: IMovieProps) {
     return (
         <Grid item xs={12} sm={6} md={4} lg={3} xl={2} sx={classes.movie}>
             <Grow in key={mkey} timeout={(mkey + 1) * 250}>
-                <Link href={getPath(`/movie/${movie.id}`)} className="link" style={classes.links}>
+                <Link href={`/movie/${movie.id}`} className="link" style={classes.links}>
                     {movie.poster_path ? (
                         <Image
                             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

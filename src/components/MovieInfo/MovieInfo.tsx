@@ -14,7 +14,6 @@ import tempIcons from '../../assets/genres';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPath } from '../../utils/path';
 
 function MovieInfo() {
     const theme = useTheme();
@@ -138,7 +137,7 @@ function MovieInfo() {
                     {data && data?.credits?.cast?.map((character: any, i: React.Key | null | undefined) => (
                         character.profile_path && (
                             <Grid key={i} item xs={4} md={2} style={{ textDecoration: 'none' }}>
-                                <Link href={getPath(`/actors/${character.id}`)} style={{ textDecoration: 'none' }}>
+                                <Link href={`/actors/${character.id}`} style={{ textDecoration: 'none' }}>
                                     <Image
                                         style={classes.castImage as any}
                                         src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
