@@ -4,7 +4,6 @@ import useStyles from './styles';
 import { useTheme } from '@mui/material/styles';
 import resolveStyles from '../../utils/resolveStyles';
 import Image from 'next/image';
-import Image from 'next/link';
 
 interface IMovie {
     id: number,

@@ -13,7 +13,6 @@ import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import tempIcons from '../../assets/genres';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
-import Link from 'next/link';
 
 function MovieInfo() {
     const theme = useTheme();
